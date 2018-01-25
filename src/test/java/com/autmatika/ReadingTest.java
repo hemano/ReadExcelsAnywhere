@@ -117,7 +117,7 @@ public class ReadingTest {
         MSOffice office = new MSOffice(ExcelLocation.LOCAL, localExcelPath);
         ReadExcel<MSOffice> readExcel = new ReadExcel<>();
 
-        List<List<Object>> list = readExcel.getExcelData(office, "Sheet2", "UsedRange");
+        List<List<Object>> list = readExcel.getExcelData(office, "SmokeTest", "UsedRange");
         System.out.println(list);
 
         readExcel.getExcelDataInStringArray(office,"UsedRange");
