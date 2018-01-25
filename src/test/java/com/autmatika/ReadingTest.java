@@ -4,6 +4,7 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
 import java.io.*;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
 
@@ -120,8 +121,11 @@ public class ReadingTest {
         List<List<Object>> list = readExcel.getExcelData(office, "SmokeTest", "UsedRange");
         System.out.println(list);
 
-        readExcel.getExcelDataInStringArray(office,"UsedRange");
+//        readExcel.getExcelDataInStringArray(office,"UsedRange");
+
+        readExcel.getExcelDataInStringArray(office,"UsedRange", Arrays.asList("DoNotConsider"));
     }
+
 
 
 }
