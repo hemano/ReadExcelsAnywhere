@@ -38,7 +38,7 @@ public class ReadingTest {
 
     }
 
-    @Test
+    @Test(enabled = false)
     public void testGoogleSheetRead() throws Exception {
 
         String resourceId = "1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms";
@@ -52,7 +52,7 @@ public class ReadingTest {
         System.out.println(sheets);
     }
 
-    @Test
+    @Test(enabled = false)
     public void testGoogleSheetReadData() throws Exception {
 
         //https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit#gid=0
@@ -71,7 +71,7 @@ public class ReadingTest {
 
     }
 
-    @Test
+    @Test(enabled = false)
     public void testSharePointExcel() throws Exception {
         String applicationId = "bb3435a1-869c-494b-9cb0-793f145dd316";
         String refreshToken = graphRefreshToken;
