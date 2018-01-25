@@ -11,11 +11,11 @@ public class ReadExcel<T extends ExcelLocationType> {
         return service.getExcelWorkSheetNames();
     }
 
-    public List<List<Object>> getExcelData(T service, String sheetName, String addressRangeOrUsedRange) throws Exception {
+    public List<List<Object>> getExcelData(T service, String sheetName, String addressRangeOrUsedRange) throws IOException {
         return service.getExcelData( sheetName, addressRangeOrUsedRange);
     }
 
-    public List<ArrayList<String>> getExcelDataInStringFormat(T service,  String sheetName, String addressRangeOrUsedRange) throws Exception {
+    public List<ArrayList<String>> getExcelDataInStringFormat(T service,  String sheetName, String addressRangeOrUsedRange) throws IOException {
 
         List<List<Object>> tempList = getExcelData(service, sheetName, addressRangeOrUsedRange);
 
@@ -27,7 +27,7 @@ public class ReadExcel<T extends ExcelLocationType> {
         return tempList1;
     }
 
-    public String[][] getExcelDataInStringArray(T service, String sheetName, String addressRangeOrUsedRange) throws Exception {
+    public String[][] getExcelDataInStringArray(T service, String sheetName, String addressRangeOrUsedRange) throws IOException {
 
         List<ArrayList<String>> values = getExcelDataInStringFormat(service, sheetName, addressRangeOrUsedRange);
 
@@ -35,7 +35,7 @@ public class ReadExcel<T extends ExcelLocationType> {
     }
 
 
-    public String[][] getExcelDataInStringArray(T service, String addressRangeOrUsedRange) throws Exception {
+    public String[][] getExcelDataInStringArray(T service, String addressRangeOrUsedRange) throws IOException {
 
         List<String[][]> listOfTables = new ArrayList<>();
 
