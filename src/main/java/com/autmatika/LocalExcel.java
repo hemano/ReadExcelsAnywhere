@@ -49,7 +49,7 @@ public class LocalExcel extends ExcelLocationType {
     }
 
     @Override
-    public List<List<Object>> getExcelData(String sheetName, String addressRangeOrUsedRange) throws Exception {
+    public List<List<Object>> getExcelData(String sheetName, String addressRangeOrUsedRange) throws IOException {
 
         List<List<Object>> tempRowsList = new ArrayList<>();
         List<Object> tempCellsList = new ArrayList<>();
@@ -67,7 +67,7 @@ public class LocalExcel extends ExcelLocationType {
             }
 
             if(emptyRowsCount > 1){
-                throw new Exception("More than 1 empty rows are present. The last valid row number is: " + sheetObject.getLastRowNum());
+                throw new IOException("More than 1 empty rows are present. The last valid row number is: " + sheetObject.getLastRowNum());
             }
 
             Row firstRow = sheetObject.getRow(0);

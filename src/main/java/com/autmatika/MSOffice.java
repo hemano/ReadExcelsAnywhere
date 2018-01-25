@@ -139,7 +139,7 @@ public class MSOffice extends ExcelLocationType {
     }
 
 
-    public List<List<Object>> getExcelData(String sheetName, String addressRangeOrUsedRange) throws Exception {
+    public List<List<Object>> getExcelData(String sheetName, String addressRangeOrUsedRange) throws IOException {
 
         if (ExcelLocation.LOCAL.equals(excelLocation)) {
             return localExcel.getExcelData(sheetName, addressRangeOrUsedRange);
