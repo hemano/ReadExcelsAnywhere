@@ -139,20 +139,26 @@ public class MSOffice extends ExcelLocationType {
     }
 
 
-    public List<List<Object>> getExcelData(String sheetName, String addressRangeOrUsedRange) {
-        String path;
-        //Decide to get either specified range or used range
-        if (addressRangeOrUsedRange.equalsIgnoreCase("USEDRANGE")) {
-            path = "/" + getResourceId() + "/workbook/worksheets/" + sheetName + "/UsedRange";
+    public List<List<Object>> getExcelData(String sheetName, String addressRangeOrUsedRange) throws Exception {
+
+        if (ExcelLocation.LOCAL.equals(excelLocation)) {
+            return localExcel.getExcelData(sheetName, addressRangeOrUsedRange);
         } else {
-            path = "/" + getResourceId() + "/workbook/worksheets/" + sheetName + "/range(address='" + addressRangeOrUsedRange + "')";
+
+            String path;
+            //Decide to get either specified range or used range
+            if (addressRangeOrUsedRange.equalsIgnoreCase("USEDRANGE")) {
+                path = "/" + getResourceId() + "/workbook/worksheets/" + sheetName + "/UsedRange";
+            } else {
+                path = "/" + getResourceId() + "/workbook/worksheets/" + sheetName + "/range(address='" + addressRangeOrUsedRange + "')";
+            }
+
+            String response = executeGetRequest(path).asString();
+
+            JsonPath jsonPath = new JsonPath(response);
+
+            return jsonPath.getList("formulas");
         }
-
-        String response = executeGetRequest(path).asString();
-
-        JsonPath jsonPath = new JsonPath(response);
-
-        return jsonPath.getList("formulas");
     }
 
 }
